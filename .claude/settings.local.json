@@ -16,7 +16,10 @@
       "mcp__plugin_figma_figma__whoami",
       "Bash(Get-ChildItem \"D:\\\\Projects\\\\Test_Projects\\\\Portfolio\\\\Wolfor_Koadon\\\\public\\\\makets\")",
       "Bash(Select-Object Name, Length)",
-      "mcp__plugin_figma_figma__get_design_context"
+      "mcp__plugin_figma_figma__get_design_context",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ]
   }
 }
