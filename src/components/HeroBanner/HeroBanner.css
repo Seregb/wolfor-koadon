@@ -1,0 +1,197 @@
+/* ===========================
+   HeroBanner — тёмное фэнтези
+   полноэкранный hero (100vh)
+   =========================== */
+
+.hero-banner {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ---------- Фон ---------- */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Основной фон — картинка background_1.jpg (главная страница) */
+.hero__bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: url('/makets/background_1.jpg') center/cover no-repeat;
+  opacity: 1;
+}
+
+/* Виньетка — затемнение по краям */
+.hero__bg-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, rgba(5, 5, 5, 0.6) 100%);
+  pointer-events: none;
+}
+
+/* ---------- Контент по центру ---------- */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--page-padding);
+  max-width: 800px;
+}
+
+/* Подзаголовок-вступление */
+.hero__tagline {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 2vw, 16px);
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  margin-bottom: 8px;
+}
+
+/* Главный заголовок */
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 7vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-shadow:
+    0 2px 20px rgba(212, 175, 55, 0.3),
+    0 4px 40px rgba(212, 175, 55, 0.15);
+  margin-bottom: 0;
+}
+
+/* ---------- Декоративный ромб-разделитель ---------- */
+.hero__divider {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.hero__divider-diamond {
+  width: 12px;
+  height: 12px;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.4),
+    0 0 20px rgba(212, 175, 55, 0.15);
+  position: relative;
+}
+
+/* Малые ромбы по бокам */
+.hero__divider-diamond::before,
+.hero__divider-diamond::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color-gold-dark);
+  transform: rotate(45deg);
+}
+
+.hero__divider-diamond::before {
+  left: -18px;
+  top: 3px;
+}
+
+.hero__divider-diamond::after {
+  right: -18px;
+  top: 3px;
+}
+
+/* Подзаголовок-слоган */
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: none;
+  color: var(--color-text-muted);
+  margin-bottom: 48px;
+  font-style: italic;
+}
+
+/* ---------- Скролл-индикатор ---------- */
+.hero__scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-dark);
+  opacity: 0.5;
+}
+
+.hero__scroll-hint svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- Адаптивность ---------- */
+
+/* Планшет */
+@media (max-width: 768px) {
+  .hero__title {
+    letter-spacing: 2px;
+  }
+
+  .hero__tagline {
+    letter-spacing: 2px;
+  }
+
+  .hero__subtitle {
+    letter-spacing: 1.5px;
+    margin-bottom: 36px;
+  }
+}
+
+/* Мобильный */
+@media (max-width: 480px) {
+  .hero-banner {
+    min-height: 100svh;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 10vw, 40px);
+    letter-spacing: 1.5px;
+  }
+
+  .hero__tagline {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero__subtitle {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .hero__divider-diamond {
+    width: 8px;
+    height: 8px;
+  }
+
+  .hero__divider-diamond::before,
+  .hero__divider-diamond::after {
+    width: 4px;
+    height: 4px;
+    left: -12px;
+  }
+
+  .hero__divider-diamond::after {
+    right: -12px;
+    left: auto;
+  }
+}

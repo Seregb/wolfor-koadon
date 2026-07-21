@@ -1,0 +1,145 @@
+/* ===========================
+   HorizontalSlider — горизонтальный слайдер со стрелками
+   =========================== */
+
+.horizontal-slider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 var(--page-padding);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* ---------- Стрелки ---------- */
+
+.horizontal-slider__btn {
+  flex: 0 0 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-gold);
+  cursor: pointer;
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast),
+              opacity var(--transition-fast);
+  z-index: 1;
+}
+
+.horizontal-slider__btn:hover:not(:disabled) {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--color-gold-dark);
+}
+
+.horizontal-slider__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.horizontal-slider__btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.horizontal-slider__btn--prev:hover:not(:disabled) svg {
+  transform: translateX(-2px);
+}
+
+.horizontal-slider__btn--next:hover:not(:disabled) svg {
+  transform: translateX(2px);
+}
+
+/* ---------- Трек ---------- */
+
+.horizontal-slider__track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  touch-action: pan-y;
+  transition: transform 0.4s ease;
+}
+
+.horizontal-slider__slide {
+  display: flex;
+}
+
+/* ---------- Карточки ---------- */
+
+.horizontal-slider__item {
+  flex: 0 0 auto;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+/* ---------- Индикаторы (dots) ---------- */
+
+.horizontal-slider__indicators {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.horizontal-slider__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.horizontal-slider__dot--active {
+  background: var(--color-gold);
+  transform: scale(1.3);
+}
+
+.horizontal-slider__dot:hover:not(.horizontal-slider__dot--active) {
+  background: var(--color-gold-dark);
+}
+
+/* ---------- Адаптивность ---------- */
+
+@media (max-width: 768px) {
+  .horizontal-slider {
+    gap: 10px;
+  }
+
+  .horizontal-slider__btn {
+    flex: 0 0 36px;
+    height: 36px;
+  }
+
+  .horizontal-slider__btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .horizontal-slider {
+    gap: 8px;
+    padding: 0 16px;
+  }
+
+  .horizontal-slider__btn {
+    flex: 0 0 32px;
+    height: 32px;
+  }
+
+  .horizontal-slider__btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}

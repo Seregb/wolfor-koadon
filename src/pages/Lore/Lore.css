@@ -1,0 +1,147 @@
+/* ===========================
+   Lore — страница энциклопедии
+   заголовок, поиск, сетка разделов
+   =========================== */
+
+/* ---------- Обёртка ---------- */
+
+.lore-page {
+  padding-bottom: 80px;
+}
+
+/* ---------- Заголовок ---------- */
+
+.lore-page__header {
+  text-align: center;
+  padding: 48px 0 32px;
+}
+
+.lore-page__title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  color: var(--color-gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.lore-page__title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 2px;
+  margin: 20px auto 0;
+  background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
+}
+
+.lore-page__subtitle {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ---------- Поиск ---------- */
+
+.lore-page__search-wrap {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto 48px;
+  padding: 0 var(--page-padding);
+}
+
+.lore-page__search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-dim);
+  pointer-events: none;
+}
+
+.lore-page__search-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  padding: 12px 16px 12px 44px;
+  outline: none;
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.lore-page__search-input::placeholder {
+  color: var(--color-text-dim);
+}
+
+.lore-page__search-input:focus {
+  border-color: var(--color-gold-dark);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.12);
+}
+
+/* ---------- Обёртка сетки ---------- */
+
+.lore-page__grid-wrap {
+  padding: 0 var(--page-padding);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .lore-page__grid-wrap {
+    padding: 0 48px;
+  }
+}
+
+/* ---------- Пустой результат ---------- */
+
+.lore-page__empty {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--color-text-dim);
+  text-align: center;
+  padding: 64px 0;
+  letter-spacing: 1px;
+}
+
+/* ---------- Адаптивность ---------- */
+
+@media (max-width: 768px) {
+  .lore-page__header {
+    padding: 36px 0 24px;
+  }
+
+  .lore-page__subtitle {
+    font-size: 14px;
+  }
+
+  .lore-page__search-wrap {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lore-page__header {
+    padding: 28px 0 20px;
+  }
+
+  .lore-page__subtitle {
+    font-size: 13px;
+  }
+
+  .lore-page__search-input {
+    font-size: 13px;
+    padding: 10px 14px 10px 40px;
+  }
+
+  .lore-page__empty {
+    padding: 48px 0;
+    font-size: 16px;
+  }
+}

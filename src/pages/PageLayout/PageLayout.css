@@ -1,0 +1,30 @@
+.page-layout {
+  padding: 48px 0;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.page-layout--bg {
+  position: relative;
+}
+
+.page-layout--bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--page-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.page-layout__inner {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 32px 0;
+  }
+}

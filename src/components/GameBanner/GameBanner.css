@@ -1,0 +1,233 @@
+/* ===========================
+   GameBanner — баннер раздела «Игры»
+   Лариар, кланы, руническая тематика
+   =========================== */
+
+/* ---------- Обёртка ---------- */
+
+.game-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ---------- Фон ---------- */
+
+.game-hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.game-hero__bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+}
+
+/* ---------- Рунические круги ---------- */
+
+.game-hero__rune {
+  position: absolute;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 50%;
+  animation: runeRotate 30s linear infinite;
+  pointer-events: none;
+}
+
+.game-hero__rune--1 {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  left: 5%;
+  border-color: rgba(212, 175, 55, 0.06);
+  animation-duration: 40s;
+}
+
+.game-hero__rune--2 {
+  width: 300px;
+  height: 300px;
+  bottom: 5%;
+  right: 10%;
+  border-color: rgba(0, 229, 255, 0.05);
+  animation-duration: 35s;
+  animation-direction: reverse;
+}
+
+@keyframes runeRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Огненные искры ---------- */
+
+.game-hero__spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  filter: blur(1px);
+  opacity: 0;
+  animation: sparkFloat 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.game-hero__spark--1 {
+  top: 30%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.game-hero__spark--2 {
+  top: 60%;
+  left: 70%;
+  animation-delay: 1.5s;
+  background: var(--color-gold-light);
+}
+
+.game-hero__spark--3 {
+  top: 45%;
+  left: 40%;
+  animation-delay: 3s;
+  width: 3px;
+  height: 3px;
+}
+
+.game-hero__spark--4 {
+  top: 20%;
+  left: 80%;
+  animation-delay: 2s;
+  background: var(--color-lightning);
+  width: 2px;
+  height: 2px;
+}
+
+@keyframes sparkFloat {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 0.8; }
+  50% { opacity: 0.3; transform: translateY(-40px); }
+  80% { opacity: 0.6; }
+}
+
+/* ---------- Контент ---------- */
+
+.game-hero__content {
+  text-align: center;
+  padding: 0 var(--page-padding);
+  max-width: 800px;
+}
+
+/* Подзаголовок-вступление */
+.game-hero__tagline {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+/* Главный заголовок */
+.game-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(44px, 8vw, 80px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-shadow:
+    0 2px 24px rgba(212, 175, 55, 0.3),
+    0 4px 48px rgba(212, 175, 55, 0.12);
+  margin-bottom: 0;
+}
+
+/* ---------- Меч-разделитель ---------- */
+
+.game-hero__divider {
+  display: flex;
+  justify-content: center;
+  margin: 28px 0;
+  color: var(--color-gold-dark);
+  opacity: 0.5;
+}
+
+/* ---------- Подзаголовок-слоган ---------- */
+
+.game-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 48px;
+}
+
+/* ---------- Скролл-индикатор ---------- */
+
+.game-hero__scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-dark);
+  opacity: 0.5;
+}
+
+.game-hero__scroll-hint svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- Адаптивность ---------- */
+
+@media (max-width: 768px) {
+  .game-hero {
+    min-height: 55vh;
+  }
+
+  .game-hero__title {
+    letter-spacing: 2px;
+  }
+
+  .game-hero__rune--1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .game-hero__rune--2 {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-hero {
+    min-height: 50svh;
+  }
+
+  .game-hero__title {
+    font-size: clamp(32px, 12vw, 48px);
+    letter-spacing: 1px;
+  }
+
+  .game-hero__tagline {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .game-hero__subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 36px;
+  }
+
+  .game-hero__divider svg {
+    width: 80px;
+    height: 14px;
+  }
+}

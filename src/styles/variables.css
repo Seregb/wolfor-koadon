@@ -1,0 +1,57 @@
+:root {
+  /* --- Цвета: тёмное фэнтези --- */
+
+  /* Фон */
+  --color-bg: #050505;
+  --color-bg-secondary: #0b0b0b;
+  --color-bg-card: #111115;
+  --color-bg-card-hover: #18181f;
+  --color-bg-overlay: rgba(5, 5, 5, 0.7);
+
+  /* Текст */
+  --color-text: #F5E6C8;       /* бежевый / тёплый белый */
+  --color-text-muted: #a09070; /* приглушённый золотистый */
+  --color-text-dim: #6a5a3e;
+
+  /* Золотой акцент */
+  --color-gold: #D4AF37;
+  --color-gold-light: #e8cc6e;
+  --color-gold-dark: #a68a2b;
+
+  /* Неоново-голубой (молнии) */
+  --color-lightning: #00E5FF;
+  --color-lightning-alt: #4facfe;
+  --color-lightning-glow: rgba(0, 229, 255, 0.15);
+
+  /* Рамки / разделители */
+  --color-border: rgba(212, 175, 55, 0.25);
+  --color-border-strong: rgba(212, 175, 55, 0.5);
+
+  /* --- Шрифты --- */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* --- Размеры --- */
+  --header-height: 72px;
+  --header-height-shrunk: 56px;
+  --page-padding: 24px;
+  --card-radius: 4px;            /* острее для готического стиля */
+  --container-max: 1200px;
+
+  /* --- Тени --- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 0 24px rgba(212, 175, 55, 0.25);
+  --shadow-lightning: 0 0 30px rgba(0, 229, 255, 0.3);
+
+  /* --- Переходы --- */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* --- Z-индексы --- */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+}
