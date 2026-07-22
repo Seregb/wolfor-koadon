@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageLayout from '../PageLayout/PageLayout';
 import HorizontalSlider from '../../components/HorizontalSlider/HorizontalSlider';
 import { books, arcMapping } from '../../data/booksData';
+import { booksBackground } from '../../assets/makets';
 
 import './Books.css';
 
@@ -24,7 +25,7 @@ function Books() {
   );
 
   return (
-    <PageLayout useBackground backgroundImage="/makets/books_background.jpg">
+    <PageLayout useBackground backgroundImage={booksBackground}>
       <div className="books-page">
         {/* Заголовок */}
         <div className="books-page__header">

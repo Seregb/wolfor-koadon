@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { background1 } from '../../assets/makets';
 
 import './HeroBanner.css';
 
@@ -36,7 +37,7 @@ function HeroBanner() {
     <section className="hero-banner">
       {/* --- Фон --- */}
       <div className="hero__bg" aria-hidden="true">
-        <div className="hero__bg-gradient" />
+        <div className="hero__bg-gradient" style={{ backgroundImage: `url('${background1}')` }} />
         <div className="hero__bg-vignette" />
       </div>
 

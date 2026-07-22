@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
+import { background2 } from '../../assets/makets';
+
 import './PageLayout.css';
 
 interface PageLayoutProps {
@@ -10,7 +12,7 @@ interface PageLayoutProps {
 }
 
 function PageLayout({ children, useBackground = false, backgroundImage }: PageLayoutProps) {
-  const bgUrl = backgroundImage || (useBackground ? '/makets/background_2.jpg' : '');
+  const bgUrl = backgroundImage || (useBackground ? background2 : '');
 
   return (
     <motion.section

@@ -1,5 +1,6 @@
 import PageLayout from '../PageLayout/PageLayout';
 import { SectionCards } from '../../components/Card/Card';
+import { aboutBackground } from '../../assets/makets';
 
 import './About.css';
 
@@ -7,7 +8,7 @@ import './About.css';
 
 function About() {
   return (
-    <PageLayout useBackground backgroundImage="/makets/about_background.jpg">
+    <PageLayout useBackground backgroundImage={aboutBackground}>
       <div className="about-page">
         {/* Заголовок */}
         <div className="about-page__header">

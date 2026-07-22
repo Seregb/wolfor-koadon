@@ -6,7 +6,7 @@
 
 .landing-content {
   position: relative;
-  background-image: url('/makets/background_1.jpg');
+  /* Фон задаётся inline-стилем из TSX для корректного пути в prod */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

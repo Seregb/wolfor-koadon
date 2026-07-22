@@ -4,6 +4,7 @@ import { useInView } from 'framer-motion';
 import PageLayout from '../PageLayout/PageLayout';
 import { LoreGrid } from '../../components/LoreCard/LoreCard';
 import { categories } from '../../data/loreData';
+import { loreBackground } from '../../assets/makets';
 
 import './Lore.css';
 
@@ -26,7 +27,7 @@ function Lore() {
     : categories;
 
   return (
-    <PageLayout useBackground backgroundImage="/makets/lore_background.jpg">
+    <PageLayout useBackground backgroundImage={loreBackground}>
       <div className="lore-page">
         {/* Заголовок */}
         <div className="lore-page__header">

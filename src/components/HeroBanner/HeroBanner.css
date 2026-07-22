@@ -22,10 +22,13 @@
 }
 
 /* Основной фон — картинка background_1.jpg (главная страница) */
+/* Фон задаётся inline-стилем из TSX для корректного пути в prod */
 .hero__bg-gradient {
   position: absolute;
   inset: 0;
-  background: url('/makets/background_1.jpg') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 1;
 }
 

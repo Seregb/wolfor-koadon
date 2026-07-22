@@ -6,6 +6,7 @@ import HeroBanner from '../../components/HeroBanner/HeroBanner';
 import { SectionCards } from '../../components/Card/Card';
 import { NewsList } from '../../components/NewsCard/NewsCard';
 import { books } from '../../data/booksData';
+import { background1 } from '../../assets/makets';
 
 import './Landing.css';
 import '../../App.css';
@@ -34,7 +35,7 @@ function Landing() {
       <HeroBanner />
 
       {/* Контент ниже hero — фон background_1.jpg */}
-      <div className="landing-content">
+      <div className="landing-content" style={{ backgroundImage: `url('${background1}')` }}>
         {/* --- 1. Карточки разделов --- */}
         <div ref={cardsRef} className="section">
           <SectionCards onScreen={cardsInView} />

@@ -4,6 +4,7 @@ import HorizontalSlider from '../../components/HorizontalSlider/HorizontalSlider
 import { ClanCard } from '../../components/ClanCard/ClanCard';
 import { DevLogCard } from '../../components/DevLogCard/DevLogCard';
 import { clans, devLogs } from '../../data/gameData';
+import { gamesBackground } from '../../assets/makets';
 
 import './Games.css';
 
@@ -19,7 +20,7 @@ function Games() {
   );
 
   return (
-    <PageLayout useBackground backgroundImage="/makets/games_background.jpg">
+    <PageLayout useBackground backgroundImage={gamesBackground}>
       <div className="games-page">
         {/* Баннер Лариара */}
         <GameBanner />

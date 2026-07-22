@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion';
 
 import PageLayout from '../PageLayout/PageLayout';
 import { NewsList, newsItems } from '../../components/NewsCard/NewsCard';
+import { newsBackground } from '../../assets/makets';
 
 import './News.css';
 
@@ -24,7 +25,7 @@ function News() {
     : newsItems.filter((n) => n.category === filter);
 
   return (
-    <PageLayout useBackground backgroundImage="/makets/news_background.jpg">
+    <PageLayout useBackground backgroundImage={newsBackground}>
       <div className="news-page">
         {/* Заголовок */}
         <div className="news-page__header">
