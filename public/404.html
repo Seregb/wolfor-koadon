@@ -6,14 +6,21 @@
   <script>
     /* SPA: перенаправляем все 404 на index.html — React Router разберёт маршрут */
     var path = window.location.pathname;
-    /* Корень репо (user site) — просто редирект на index.html */
-    if (path === '/') {
-      window.location.href = 'index.html';
-    } else {
-      /* Поддиректория (project site) — убираем имя файла, добавляем ../ */
-      var parts = path.split('/').filter(Boolean);
-      var base = parts.length > 1 ? '../' : '';
-      window.location.href = base + 'index.html';
+    var parts = path.split('/').filter(Boolean);
+    /* basename — первое имя папки (для GitHub Pages project site это имя репо) */
+    var basename = parts.length > 0 ? '/' + parts[0] : '';
+
+    /* Это SPA-роут, а не запрос файла — перенаправляем */
+    var lastPart = parts.length > 0 ? parts[parts.length - 1] : '';
+    if (lastPart && !lastPart.includes('.')) {
+
+      /* Мы уже на главной странице репо — редирект на index.html внутри basename */
+      if (path === '/' || path === basename || path === basename + '/') {
+        window.location.href = basename + '/index.html';
+      } else {
+        /* Вложенный роут — перенаправляем на index.html в папке basename */
+        window.location.href = basename + '/index.html';
+      }
     }
   </script>
 </head>
