@@ -25,7 +25,7 @@ function App() {
         <main className="main-content">
           <Suspense fallback={null}>
             <AnimatePresence mode="wait">
-              <Routes location={window.location}>
+              <Routes>
                 <Route path="/" element={<PageTransition name="landing"><Landing /></PageTransition>} />
                 <Route path="/books" element={<PageTransition name="books"><Books /></PageTransition>} />
                 <Route path="/books/:id" element={<PageTransition name="book-detail"><BookDetail /></PageTransition>} />

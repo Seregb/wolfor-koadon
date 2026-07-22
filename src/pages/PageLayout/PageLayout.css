@@ -5,6 +5,7 @@
 
 .page-layout--bg {
   position: relative;
+  z-index: 0;
 }
 
 .page-layout--bg::before {
