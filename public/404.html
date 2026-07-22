@@ -6,10 +6,14 @@
   <script>
     /* SPA: перенаправляем все 404 на index.html — React Router разберёт маршрут */
     var path = window.location.pathname;
-    var file = path.split('/').pop();
-    if (file && !file.includes('.')) {
-      /* Это маршрут SPA, а не запрос файла */
-      window.location.href = '../index.html';
+    /* Корень репо (user site) — просто редирект на index.html */
+    if (path === '/') {
+      window.location.href = 'index.html';
+    } else {
+      /* Поддиректория (project site) — убираем имя файла, добавляем ../ */
+      var parts = path.split('/').filter(Boolean);
+      var base = parts.length > 1 ? '../' : '';
+      window.location.href = base + 'index.html';
     }
   </script>
 </head>

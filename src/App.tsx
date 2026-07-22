@@ -19,7 +19,7 @@ const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/wolfor-kaidon">
       <div className="page-wrapper">
         <Header />
         <main className="main-content">
