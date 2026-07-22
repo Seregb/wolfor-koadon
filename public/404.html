@@ -9,13 +9,13 @@
     var file = path.split('/').pop();
     if (file && !file.includes('.')) {
       /* Это маршрут SPA, а не запрос файла */
-      window.location.pathname = '/wolfor-koadon/';
+      window.location.href = './index.html';
     }
   </script>
 </head>
 <body>
   <noscript>
-    <meta http-equiv="refresh" content="0;url=/wolfor-koadon/">
+    <meta http-equiv="refresh" content="0;url=./index.html">
   </noscript>
 </body>
 </html>
