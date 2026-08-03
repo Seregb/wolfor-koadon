@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { filterBooks } from './booksData';
+import { filterBooks, getPrevNext } from './booksData';
 
 describe('filterBooks', () => {
   test('при арке "Пробуждение" возвращает 2 книги — "Пробуждение Руны" и "Тень Акиара"', () => {
@@ -50,5 +50,39 @@ describe('filterBooks', () => {
     const result = filterBooks('Война', 'zzzне_существует');
 
     expect(result).toHaveLength(0);
+  });
+});
+
+describe('getPrevNext', () => {
+  test('первая книга не имеет prev, имеет next — "Тень Акиара"', () => {
+    const { prev, next } = getPrevNext('rune-awakening');
+
+    expect(prev).toBeNull();
+    expect(next).not.toBeNull();
+    expect(next!.id).toBe('akiar-shadow');
+  });
+
+  test('последняя книга имеет prev — "Последний Страж", не имеет next', () => {
+    const { prev, next } = getPrevNext('set-saga');
+
+    expect(prev).not.toBeNull();
+    expect(prev!.id).toBe('last-ward');
+    expect(next).toBeNull();
+  });
+
+  test('средняя книга имеет оба соседних — "Тень Акиара" prev "Пробуждение Руны", next "Пепел Лариара"', () => {
+    const { prev, next } = getPrevNext('akiar-shadow');
+
+    expect(prev).not.toBeNull();
+    expect(prev!.id).toBe('rune-awakening');
+    expect(next).not.toBeNull();
+    expect(next!.id).toBe('lariar-ashes');
+  });
+
+  test('неизвестный id возвращает null для обоих', () => {
+    const { prev, next } = getPrevNext('non-existent');
+
+    expect(prev).toBeNull();
+    expect(next).toBeNull();
   });
 });

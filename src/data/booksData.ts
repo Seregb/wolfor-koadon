@@ -122,6 +122,7 @@ export const books: BookData[] = [
 
 export function getPrevNext(currentId: string): { prev: BookData | null; next: BookData | null } {
   const idx = books.findIndex((b) => b.id === currentId);
+  if (idx === -1) return { prev: null, next: null };
   const prev = idx > 0 ? books[idx - 1] : null;
   const next = idx < books.length - 1 ? books[idx + 1] : null;
   return { prev, next };
