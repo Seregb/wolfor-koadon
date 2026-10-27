@@ -48,18 +48,15 @@ const elementColors: Record<ClanData['element'], string> = {
   'Земля': '#b8960a',
 };
 
-export function ClanCard({ data, index = 0, onScreen = false }: ClanCardProps) {
+export function ClanCard({ data }: ClanCardProps) {
   const accentColor = elementColors[data.element] || 'var(--color-gold)';
 
   return (
     <motion.div
       className="clan-card"
-      initial="hidden"
-      animate={onScreen ? 'visible' : 'hidden'}
-      variants={{ ...clanEntranceVariants, ...clanHoverVariants }}
-      custom={index}
       whileHover="hover"
       whileTap="tap"
+      variants={clanHoverVariants}
       style={{ '--clan-accent': accentColor } as React.CSSProperties}
     >
       {/* Эмблема */}

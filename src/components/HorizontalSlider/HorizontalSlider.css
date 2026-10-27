@@ -9,6 +9,7 @@
   padding: 0 var(--page-padding);
   max-width: var(--container-max);
   margin: 0 auto;
+  position: relative;
 }
 
 /* ---------- Стрелки ---------- */
@@ -63,11 +64,12 @@
   position: relative;
   user-select: none;
   touch-action: pan-y;
-  transition: transform 0.4s ease;
+  min-width: 0;
 }
 
 .horizontal-slider__slide {
   display: flex;
+  transition: transform 0.4s ease;
 }
 
 /* ---------- Карточки ---------- */

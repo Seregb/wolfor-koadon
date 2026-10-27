@@ -27,7 +27,7 @@ interface DevLogCardProps {
   onScreen?: boolean;
 }
 
-export function DevLogCard({ data, index = 0, onScreen = false }: DevLogCardProps) {
+export function DevLogCard({ data }: DevLogCardProps) {
   const formattedDate = new Date(data.date).toLocaleDateString('ru-RU', {
     day: 'numeric',
     month: 'long',
@@ -37,10 +37,6 @@ export function DevLogCard({ data, index = 0, onScreen = false }: DevLogCardProp
   return (
     <motion.div
       className="devlog-card"
-      initial="hidden"
-      animate={onScreen ? 'visible' : 'hidden'}
-      variants={devLogEntranceVariants}
-      custom={index}
       whileHover={{ x: 4 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
     >

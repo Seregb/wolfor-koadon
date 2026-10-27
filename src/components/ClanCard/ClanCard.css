@@ -52,11 +52,11 @@
 .clan-card__emblem {
   display: flex;
   justify-content: center;
-  padding: 28px 0 16px;
+  padding: 20px 0 12px;
 }
 
 .clan-card__emblem-icon {
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1;
   filter: drop-shadow(0 0 8px var(--clan-accent));
   transition: transform var(--transition-normal);
@@ -69,17 +69,17 @@
 /* ---------- Тело ---------- */
 
 .clan-card__body {
-  padding: 0 24px 24px;
+  padding: 0 18px 18px;
 }
 
 /* ---------- Название ---------- */
 
 .clan-card__name {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--clan-accent);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   line-height: 1.2;
 }
 
@@ -94,16 +94,17 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--color-text-dim);
+  margin-bottom: 10px;
 }
 
 .clan-card__element-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--clan-accent);
   box-shadow: 0 0 6px var(--clan-accent);
@@ -113,11 +114,15 @@
 
 .clan-card__desc {
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 13px;
+  line-height: 1.55;
   color: var(--color-text-muted);
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   transition: color var(--transition-fast);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .clan-card:hover .clan-card__desc {
@@ -129,12 +134,12 @@
 .clan-card__territory {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-dim);
   letter-spacing: 0.5px;
-  padding-top: 12px;
+  padding-top: 8px;
   border-top: 1px solid var(--color-border);
 }
 
@@ -170,37 +175,38 @@
 
 @media (max-width: 768px) {
   .clan-card__body {
-    padding: 0 20px 20px;
+    padding: 0 16px 16px;
   }
 
   .clan-card__name {
-    font-size: 19px;
+    font-size: 16px;
   }
 
   .clan-card__desc {
-    font-size: 13px;
+    font-size: 12px;
+    -webkit-line-clamp: 3;
   }
 }
 
 @media (max-width: 480px) {
   .clan-card__emblem {
-    padding: 20px 0 12px;
+    padding: 16px 0 10px;
   }
 
   .clan-card__emblem-icon {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .clan-card__body {
-    padding: 0 16px 18px;
+    padding: 0 14px 14px;
   }
 
   .clan-card__name {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .clan-card__desc {
-    font-size: 13px;
-    line-height: 1.55;
+    font-size: 12px;
+    -webkit-line-clamp: 3;
   }
 }
