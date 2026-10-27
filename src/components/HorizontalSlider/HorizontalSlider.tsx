@@ -20,6 +20,8 @@ function HorizontalSlider<T>({
   className = '',
 }: HorizontalSliderProps<T>) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideWidth, setSlideWidth] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const maxIndex = Math.max(0, items.length - visibleCount);
@@ -42,32 +44,43 @@ function HorizontalSlider<T>({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [goToNext, goToPrev]);
 
-  // Вычисляем ширину трека и offset в px
-  const trackWidth = useRef<number>(0);
-  const slideWidth = useRef<number>(0);
-  const offset = useRef<number>(0);
-
   const updateMeasurements = useCallback(() => {
-    const container = trackRef.current;
-    if (!container) return;
-    const cw = container.clientWidth;
-    const sw = (cw - GAP * (visibleCount - 1)) / visibleCount;
-    const tw = items.length * sw + (items.length - 1) * GAP;
-    trackWidth.current = tw;
-    slideWidth.current = sw + GAP;
-    offset.current = currentIndex * (sw + GAP);
-  }, [items.length, visibleCount, currentIndex]);
+    const container = containerRef.current;
+    const track = trackRef.current;
+    if (!container || !track) return;
+    // Ширина трека = ширина контейнера минус отступы
+    const trackW = track.clientWidth;
+    // Ширина одной карточки = (trackWidth - GAP * (visibleCount - 1)) / visibleCount
+    const sw = (trackW - GAP * (visibleCount - 1)) / visibleCount;
+    setSlideWidth(sw);
+  }, []);
 
-  // Пересчёт при resize
+  // Инициализация при монтировании
   useEffect(() => {
     updateMeasurements();
-    const handleResize = () => updateMeasurements();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, [updateMeasurements]);
 
+  // ResizeObserver на треке для отслеживания изменений размера с debounce
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    let timeoutId: number | null = null;
+    const observer = new ResizeObserver(() => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(updateMeasurements, 100);
+    });
+    observer.observe(track);
+    return () => {
+      observer.disconnect();
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [updateMeasurements]);
+
+  // Offset: каждая карточка = slideWidth + GAP
+  const offset = slideWidth > 0 ? currentIndex * (slideWidth + GAP) : 0;
+
   return (
-    <div className={`horizontal-slider ${className}`}>
+    <div ref={containerRef} className={`horizontal-slider ${className}`}>
       {/* Стрелка влево */}
       <button
         className={`horizontal-slider__btn horizontal-slider__btn--prev ${currentIndex === 0 ? 'horizontal-slider__btn--disabled' : ''}`}
@@ -81,14 +94,13 @@ function HorizontalSlider<T>({
       </button>
 
       {/* Трек с карточками */}
-      <div
-        ref={trackRef}
-        className="horizontal-slider__track"
-        style={{ width: trackWidth.current, transform: `translateX(${-offset.current}px)` }}
-      >
-        <div className="horizontal-slider__slide">
+      <div ref={trackRef} className="horizontal-slider__track">
+        <div
+          className="horizontal-slider__slide"
+          style={{ transform: `translateX(${-offset}px)` }}
+        >
           {items.map((item) => (
-            <div key={itemKey(item)} className="horizontal-slider__item">
+            <div key={itemKey(item)} className="horizontal-slider__item" style={{ width: slideWidth }}>
               {renderItem(item)}
             </div>
           ))}
