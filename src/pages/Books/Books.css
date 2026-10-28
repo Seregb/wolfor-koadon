@@ -1,12 +1,16 @@
 /* ===========================
    Books — страница списка книг
-   горизонтальные слайдеры по аркам
+   CSS-сетка, без слайдеров
    =========================== */
 
 /* ---------- Обёртка страницы ---------- */
 
 .books-page {
   padding-bottom: 80px;
+}
+
+.books-page__grid {
+  padding-top: 16px;
 }
 
 /* ---------- Заголовок страницы ---------- */
@@ -69,6 +73,8 @@
   top: 3px;
 }
 
+/* ---------- Подзаголовок ---------- */
+
 .books-page__subtitle {
   font-family: var(--font-body);
   font-size: clamp(14px, 2.5vw, 18px);
@@ -79,114 +85,11 @@
   font-style: italic;
 }
 
-/* ---------- Секция арки ---------- */
-
-.books-page__arc {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 32px var(--page-padding) 24px;
-}
-
-.books-page__arc-title {
-  font-family: var(--font-heading);
-  font-size: clamp(20px, 3.5vw, 28px);
-  font-weight: 700;
-  color: var(--color-gold-light);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  padding-left: 12px;
-  border-left: 3px solid var(--color-gold-dark);
-}
-
-/* ---------- Слайдер-обложка книги ---------- */
-
-.books-page__slider-cover {
-  flex: 0 0 auto;
-  text-decoration: none;
-  transition: transform var(--transition-normal);
-}
-
-.books-page__slider-cover:hover {
-  transform: translateY(-6px);
-}
-
-.books-page__slider-cover-inner {
-  width: 150px;
-  height: 225px;
-  border-radius: var(--card-radius);
-  background:
-    linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-card-hover) 100%);
-  border: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  text-align: center;
-  transition: border-color var(--transition-normal),
-              box-shadow var(--transition-normal);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Готическая рамка */
-.books-page__slider-cover-inner::before {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.books-page__slider-cover:hover .books-page__slider-cover-inner {
-  border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-gold);
-}
-
-.books-page__slider-cover-volume {
-  font-family: var(--font-body);
-  font-size: 11px;
-  color: var(--color-gold-dark);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.books-page__slider-cover-title {
-  font-family: var(--font-heading);
-  font-size: 13px;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-  margin-bottom: 8px;
-}
-
-.books-page__slider-cover-year {
-  font-family: var(--font-body);
-  font-size: 12px;
-  color: var(--color-text-dim);
-}
-
 /* ---------- Адаптивность ---------- */
 
 @media (max-width: 768px) {
   .books-page__header {
     padding: 36px 0 24px;
-  }
-
-  .books-page__arc {
-    padding: 24px 20px 20px;
-  }
-
-  .books-page__slider-cover-inner {
-    width: 120px;
-    height: 180px;
-  }
-
-  .books-page__slider-cover-title {
-    font-size: 12px;
   }
 }
 
@@ -198,18 +101,5 @@
   .books-page__title {
     letter-spacing: 1.5px;
     font-size: clamp(24px, 9vw, 32px);
-  }
-
-  .books-page__arc {
-    padding: 20px 16px 16px;
-  }
-
-  .books-page__slider-cover-inner {
-    width: 100px;
-    height: 150px;
-  }
-
-  .books-page__slider-cover-title {
-    font-size: 11px;
   }
 }

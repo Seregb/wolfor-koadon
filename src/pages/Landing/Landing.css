@@ -147,31 +147,16 @@
   color: var(--color-gold);
 }
 
-/* ---------- Горизонтальная галерея обложек ---------- */
+/* ---------- Сетка обложек книг (CSS-grid) ---------- */
 
 .universe-block__gallery {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
-  overflow-x: auto;
   padding-bottom: 12px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-gold-dark) transparent;
-}
-
-.universe-block__gallery::-webkit-scrollbar {
-  height: 4px;
-}
-
-.universe-block__gallery::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.universe-block__gallery::-webkit-scrollbar-thumb {
-  background: var(--color-gold-dark);
-  border-radius: 2px;
 }
 
 .universe-block__gallery--visible {
@@ -180,63 +165,44 @@
 }
 
 .universe-block__cover {
-  flex: 0 0 auto;
   text-decoration: none;
-  transition: transform var(--transition-normal);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
 }
 
 .universe-block__cover:hover {
   transform: translateY(-4px);
-}
-
-/* Placeholder обложки книги */
-.universe-block__cover-placeholder {
-  width: 140px;
-  height: 210px;
-  border-radius: var(--card-radius);
-  background:
-    linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-card-hover) 100%);
-  border: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  text-align: center;
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
-  position: relative;
-  overflow: hidden;
-}
-
-.universe-block__cover-placeholder::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.universe-block__cover:hover .universe-block__cover-placeholder {
-  border-color: var(--color-border-strong);
   box-shadow: var(--shadow-gold);
 }
 
-.universe-block__cover-volume {
-  font-family: var(--font-body);
-  font-size: 11px;
-  color: var(--color-gold-dark);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+.universe-block__cover-img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-normal);
 }
 
-.universe-block__cover-title {
-  font-family: var(--font-heading);
-  font-size: 13px;
-  color: var(--color-text-muted);
-  line-height: 1.4;
+.universe-block__cover:hover .universe-block__cover-img {
+  transform: scale(1.05);
+}
+
+/* ---------- Два блока новостей (двухколоночная раскладка) ---------- */
+
+.landing-news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 0 var(--page-padding);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.landing-news-block {
+  /* обёртка для каждого NewsList */
 }
 
 /* ---------- Адаптивность ---------- */
@@ -257,13 +223,10 @@
     gap: 8px;
   }
 
-  .universe-block__cover-placeholder {
-    width: 120px;
-    height: 180px;
-  }
-
-  .universe-block__cover-title {
-    font-size: 12px;
+  /* Новости — стек */
+  .landing-news-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
@@ -290,16 +253,18 @@
     padding: 0 16px;
   }
 
-  .universe-block__cover-placeholder {
-    width: 100px;
-    height: 150px;
-  }
-
-  .universe-block__cover-title {
-    font-size: 11px;
-  }
-
   .universe-block__gallery {
     gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .universe-block__cover-img {
+    height: 180px;
+  }
+
+  /* Новости — стек */
+  .landing-news-grid {
+    padding: 0 12px;
+    gap: 16px;
   }
 }

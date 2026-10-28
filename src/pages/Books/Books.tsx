@@ -1,33 +1,24 @@
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { useInView } from 'framer-motion';
 
 import PageLayout from '../PageLayout/PageLayout';
-import HorizontalSlider from '../../components/HorizontalSlider/HorizontalSlider';
-import { books, arcMapping } from '../../data/booksData';
+import { BookGrid } from '../../components/BookCard/BookCard';
+import { bookCards } from '../../data/booksData';
 import { booksBackground } from '../../assets/makets';
 
 import './Books.css';
+import '../../App.css';
 
 /* ---------- Страница «Книги» ---------- */
 
 function Books() {
-  /* Книги по аркам — порядок как в референсе */
-  const arcs = ['Пробуждение', 'Война', 'Наследие'] as const;
-
-  /* Compact book cover для слайдера */
-  const renderBookCover = (book: typeof books[number]) => (
-    <Link to={`/books/${book.id}`} className="books-page__slider-cover">
-      <div className="books-page__slider-cover-inner">
-        <span className="books-page__slider-cover-volume">{book.volume}</span>
-        <span className="books-page__slider-cover-title">{book.title}</span>
-        <span className="books-page__slider-cover-year">{book.year}</span>
-      </div>
-    </Link>
-  );
+  const gridRef = useRef<HTMLDivElement>(null);
+  const gridView = useInView(gridRef, { once: true, margin: '-80px' });
 
   return (
     <PageLayout useBackground backgroundImage={booksBackground}>
       <div className="books-page">
-        {/* Заголовок */}
+        {/* Заголовок страницы */}
         <div className="books-page__header">
           <h1 className="books-page__title">КНИГИ ЦИКЛА «СЭТ»</h1>
           <div className="books-page__divider">
@@ -38,23 +29,10 @@ function Books() {
           </p>
         </div>
 
-        {/* Арки с горизонтальными слайдерами */}
-        {arcs.map((arc) => {
-          const arcBooks = books.filter((b) => arcMapping[arc].includes(b.id));
-          if (arcBooks.length === 0) return null;
-
-          return (
-            <div key={arc} className="books-page__arc">
-              <h2 className="books-page__arc-title">{arc}</h2>
-              <HorizontalSlider
-                items={arcBooks}
-                renderItem={renderBookCover}
-                itemKey={(b) => b.id}
-                visibleCount={3}
-              />
-            </div>
-          );
-        })}
+        {/* Сетка книг */}
+        <div ref={gridRef} className="books-page__grid">
+          <BookGrid booksData={bookCards} onScreen={gridView} />
+        </div>
       </div>
     </PageLayout>
   );

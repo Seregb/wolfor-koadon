@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import './BookCard.css';
 import { type BookCardData } from '../../data/booksData';
@@ -15,7 +16,7 @@ export const bookCardEntranceVariants = {
     transition: {
       delay: i * 0.1,
       duration: 0.5,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     } as const,
   }),
 };
@@ -25,7 +26,7 @@ export const bookCardEntranceVariants = {
 export const bookCardHoverVariants = {
   hover: {
     y: -4,
-    transition: { duration: 0.3, ease: "easeInOut" } as const,
+    transition: { duration: 0.3, ease: 'easeInOut' } as const,
   },
   tap: { y: 0 },
 };
@@ -39,22 +40,28 @@ interface BookCardProps {
 }
 
 function BookCard({ data, index = 0, onScreen = false }: BookCardProps) {
-  const variants = { ...bookCardEntranceVariants, ...bookCardHoverVariants };
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <motion.div
       className="book-card"
       initial="hidden"
       animate={onScreen ? 'visible' : 'hidden'}
-      variants={variants}
+      variants={bookCardEntranceVariants}
       custom={index}
       whileHover="hover"
       whileTap="tap"
       style={{ '--book-card-index': index } as React.CSSProperties}
     >
-      {/* Обложка-заглушка */}
+      {/* Реальная обложка */}
       <div className="book-card__cover">
+        <img
+          src={data.cover}
+          alt={data.title}
+          className="book-card__cover-img"
+          loading="lazy"
+        />
         <span className="book-card__cover-volume">{data.volume}</span>
-        <span className="book-card__cover-year">{data.year}</span>
       </div>
 
       {/* Контент */}
@@ -66,6 +73,37 @@ function BookCard({ data, index = 0, onScreen = false }: BookCardProps) {
         </h3>
 
         <p className="book-card__desc">{data.description}</p>
+
+        {/* Расширенное описание (аккордеон) */}
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              className="book-card__full"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' } as const}
+            >
+              <p>{data.fullDescription}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Кнопка раскрытия */}
+        <button
+          className="book-card__toggle"
+          onClick={() => setExpanded(prev => !prev)}
+          aria-expanded={expanded}
+        >
+          <span>{expanded ? 'Свернуть' : 'Подробнее'}</span>
+          <motion.span
+            className="book-card__toggle-arrow"
+            animate={{ rotate: expanded ? 180 : 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' } as const}
+          >
+            &#x25BC;
+          </motion.span>
+        </button>
       </div>
 
       {/* Декоративная золотая линия */}
