@@ -9,7 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "vitest",
-    "postinstall": "node scripts/postinstall.js"
+    "postinstall": "node scripts/postinstall.cjs"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",
