@@ -9,15 +9,28 @@
   padding-bottom: 80px;
 }
 
-/* ---------- Секция описания (GameDescription) ---------- */
+/* ---------- Градиентный переход от GameBanner к фону ---------- */
 
-.games-page__desc-section {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding-top: 48px;
-  padding-bottom: 24px;
-  padding-left: var(--page-padding);
-  padding-right: var(--page-padding);
+.games-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 5, 5, 0.3) 40%,
+    rgba(5, 5, 5, 0.7) 70%,
+    var(--color-bg-deep) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.games-page {
+  position: relative;
 }
 
 /* ---------- Секция Теней Акиара ---------- */
@@ -70,11 +83,6 @@
     padding-top: 56px;
   }
 
-  .games-page__desc-section {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   .section__intro {
     font-size: 14px;
     margin-bottom: 32px;
@@ -86,11 +94,6 @@
 }
 
 @media (max-width: 480px) {
-  .games-page__desc-section {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
   .section__intro {
     font-size: 13px;
     margin-bottom: 24px;
