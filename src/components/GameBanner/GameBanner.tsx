@@ -23,9 +23,10 @@ export interface GameBannerProps {
   tagline?: string;
   subtitle?: string;
   image?: string; // URL игрового арта
+  onArtClick?: () => void; // вызывается при клике на арт
 }
 
-function GameBanner({ title, tagline, subtitle, image }: GameBannerProps) {
+function GameBanner({ title, tagline, subtitle, image, onArtClick }: GameBannerProps) {
   return (
     <section className="game-hero">
       {/* --- Фон: игровой арт или градиент --- */}
@@ -36,9 +37,19 @@ function GameBanner({ title, tagline, subtitle, image }: GameBannerProps) {
             alt={title}
             className="game-hero__bg-img"
             loading="lazy"
+            onClick={onArtClick}
+            style={{ cursor: onArtClick ? 'pointer' : 'default' }}
           />
         )}
         <div className="game-hero__bg-overlay" />
+
+        {/* Подсказка для кликабельного баннера */}
+        {onArtClick && (
+          <div className="game-hero__click-hint" aria-hidden="true">
+            <span className="game-hero__click-hint-text">Нажмите для описания</span>
+            <span className="game-hero__click-hint-icon">↓</span>
+          </div>
+        )}
 
         {/* Рунические круги — декоративные */}
         <div className="game-hero__rune game-hero__rune--1" />
