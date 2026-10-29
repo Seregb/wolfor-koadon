@@ -92,8 +92,8 @@
 }
 
 .horizontal-slider__dot {
-  width: 8px;
-  height: 8px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--color-border);
   border: none;
@@ -109,6 +109,10 @@
 
 .horizontal-slider__dot:hover:not(.horizontal-slider__dot--active) {
   background: var(--color-gold-dark);
+}
+
+.horizontal-slider__indicators {
+  gap: 12px;
 }
 
 /* ---------- Адаптивность ---------- */

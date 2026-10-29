@@ -9,7 +9,6 @@ import { books } from '../../data/booksData';
 import { background1 } from '../../assets/makets';
 
 import './Landing.css';
-import '../../App.css';
 
 /* Сколько книг показывать в галерее */
 const GALLERY_BOOK_COUNT = 5;

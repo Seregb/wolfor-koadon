@@ -48,9 +48,13 @@ function BookDetail() {
         {/* Обложка + мета */}
         <div className="book-detail__hero">
           <div className="book-detail__cover">
+            <img
+              src={book.cover}
+              alt={book.title}
+              className="book-detail__cover-img"
+              loading="lazy"
+            />
             <span className="book-detail__cover-volume">{book.volume}</span>
-            <span className="book-detail__cover-year">{book.year}</span>
-            <span className="book-detail__cover-title">{book.title}</span>
           </div>
 
           <div className="book-detail__info">

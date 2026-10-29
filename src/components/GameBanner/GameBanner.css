@@ -1,6 +1,6 @@
 /* ===========================
    GameBanner — баннер раздела «Игры»
-   Лариар, кланы, руническая тематика
+   обобщённый: title, tagline, subtitle, image
    =========================== */
 
 /* ---------- Обёртка ---------- */
@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: transparent;
+  position: relative;
 }
 
 /* ---------- Фон ---------- */
@@ -21,10 +21,24 @@
   inset: 0;
 }
 
-.game-hero__bg-gradient {
+.game-hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(0.85);
+  object-position: center;
+}
+
+/* Затемнение поверх арта для читаемости текста */
+.game-hero__bg-overlay {
   position: absolute;
   inset: 0;
-  background: transparent;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 5, 5, 0.4) 0%,
+    rgba(5, 5, 5, 0.7) 60%,
+    rgba(5, 5, 5, 0.9) 100%
+  );
 }
 
 /* ---------- Рунические круги ---------- */
@@ -118,6 +132,8 @@
   text-align: center;
   padding: 0 var(--page-padding);
   max-width: 800px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Подзаголовок-вступление */
@@ -144,16 +160,6 @@
     0 2px 24px rgba(212, 175, 55, 0.3),
     0 4px 48px rgba(212, 175, 55, 0.12);
   margin-bottom: 0;
-}
-
-/* ---------- Меч-разделитель ---------- */
-
-.game-hero__divider {
-  display: flex;
-  justify-content: center;
-  margin: 28px 0;
-  color: var(--color-gold-dark);
-  opacity: 0.5;
 }
 
 /* ---------- Подзаголовок-слоган ---------- */
@@ -224,10 +230,5 @@
     font-size: 11px;
     letter-spacing: 2px;
     margin-bottom: 36px;
-  }
-
-  .game-hero__divider svg {
-    width: 80px;
-    height: 14px;
   }
 }

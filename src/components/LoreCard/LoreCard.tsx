@@ -56,11 +56,11 @@ function LoreCard({ data, index = 0, onScreen = false }: LoreCardProps) {
 
       {/* Название и подзаголовок */}
       <div className="lore-card__header">
-        <h3 className="lore-card__title">
+        <h2 className="lore-card__title">
           <Link to={`/lore/${data.id}`} className="lore-card__link">
             {data.title}
           </Link>
-        </h3>
+        </h2>
         <span className="lore-card__subtitle">{data.subtitle}</span>
       </div>
 

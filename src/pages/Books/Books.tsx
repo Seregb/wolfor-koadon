@@ -7,7 +7,6 @@ import { bookCards } from '../../data/booksData';
 import { booksBackground } from '../../assets/makets';
 
 import './Books.css';
-import '../../App.css';
 
 /* ---------- Страница «Книги» ---------- */
 

@@ -66,11 +66,11 @@ function BookCard({ data, index = 0, onScreen = false }: BookCardProps) {
 
       {/* Контент */}
       <div className="book-card__body">
-        <h3 className="book-card__title">
+        <h2 className="book-card__title">
           <Link to={`/books/${data.id}`} className="book-card__link">
             {data.title}
           </Link>
-        </h3>
+        </h2>
 
         <p className="book-card__desc">{data.description}</p>
 

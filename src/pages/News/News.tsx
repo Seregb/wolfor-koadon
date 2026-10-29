@@ -6,7 +6,6 @@ import { NewsList, newsItems } from '../../components/NewsCard/NewsCard';
 import { newsBackground } from '../../assets/makets';
 
 import './News.css';
-import '../../App.css';
 
 /* ---------- Страница «Новости» ---------- */
 

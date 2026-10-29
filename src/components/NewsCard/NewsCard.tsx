@@ -92,7 +92,7 @@ function NewsCard({ item, index = 0, onScreen = false }: NewsCardProps) {
       </div>
 
       {/* Заголовок */}
-      <h3 className="news-card__title">{item.title}</h3>
+      <h2 className="news-card__title">{item.title}</h2>
 
       {/* Краткое содержимое */}
       <p className="news-card__excerpt">{item.excerpt}</p>

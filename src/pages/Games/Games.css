@@ -1,6 +1,6 @@
 /* ===========================
    Games — страница раздела «Игры»
-   баннер, кланы, dev-логи
+   баннер, кланы, dev-логи, Тени Акиара
    =========================== */
 
 /* ---------- Обёртка ---------- */
@@ -9,7 +9,26 @@
   padding-bottom: 80px;
 }
 
-/* ---------- Секции ---------- */
+/* ---------- Секция описания (GameDescription) ---------- */
+
+.games-page__desc-section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-top: 48px;
+  padding-bottom: 24px;
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+}
+
+/* ---------- Секция Теней Акиара ---------- */
+
+.games-page__tenia-section {
+  margin-top: 100px;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------- Секции кланов и dev-логов ---------- */
 
 .games-page__clans-section {
   padding-top: 80px;
@@ -51,13 +70,27 @@
     padding-top: 56px;
   }
 
+  .games-page__desc-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .section__intro {
     font-size: 14px;
     margin-bottom: 32px;
   }
+
+  .games-page__tenia-section {
+    margin-top: 60px;
+  }
 }
 
 @media (max-width: 480px) {
+  .games-page__desc-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .section__intro {
     font-size: 13px;
     margin-bottom: 24px;

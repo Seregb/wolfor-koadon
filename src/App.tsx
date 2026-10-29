@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Suspense, lazy } from 'react';
 
+import './App.css';
+
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import PageTransition from './components/PageTransition';
