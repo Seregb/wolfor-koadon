@@ -46,7 +46,7 @@ function GameCard({ title, subtitle, previewItems, onOpen, image, accent = 'var(
     >
       {/* --- Арт-фон карточки --- */}
       <div className="game-card__art" aria-hidden="true">
-        <img src={image} alt={title} loading="lazy" />
+        <img src={image} alt={title} loading="lazy" draggable="false" onContextMenu={(e) => e.preventDefault()} />
         <div className="game-card__art-overlay" />
       </div>
 

@@ -101,7 +101,7 @@ function GameModal({ isOpen, onClose, title, poster, fullText }: GameModalProps)
 
             {/* Постер (место под видео) */}
             <div className="game-modal__poster">
-              <img src={poster} alt={title} />
+              <img src={poster} alt={title} draggable="false" onContextMenu={(e) => e.preventDefault()} />
             </div>
 
             {/* Текст */}

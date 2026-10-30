@@ -103,6 +103,12 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 /* Градиентный переход от постера к тексту */
