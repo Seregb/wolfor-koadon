@@ -95,6 +95,9 @@
   font-size: 15px;
   line-height: 1.75;
   color: var(--color-text-muted);
+  background: rgba(5, 5, 5, 0.45);
+  border-radius: var(--card-radius);
+  padding: 24px 28px;
 }
 
 .about-page__text p {
@@ -116,6 +119,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background: rgba(5, 5, 5, 0.35);
+  border-radius: var(--card-radius);
+  padding: 24px 28px;
 }
 
 .about-page__contact-link {
