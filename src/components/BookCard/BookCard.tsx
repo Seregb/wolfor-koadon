@@ -60,6 +60,8 @@ function BookCard({ data, index = 0, onScreen = false }: BookCardProps) {
           alt={data.title}
           className="book-card__cover-img"
           loading="lazy"
+          draggable="false"
+          onContextMenu={(e) => e.preventDefault()}
         />
       </div>
 

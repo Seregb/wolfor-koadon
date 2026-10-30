@@ -53,6 +53,8 @@ function BookDetail() {
               alt={book.title}
               className="book-detail__cover-img"
               loading="lazy"
+              draggable="false"
+              onContextMenu={(e) => e.preventDefault()}
             />
           </div>
 

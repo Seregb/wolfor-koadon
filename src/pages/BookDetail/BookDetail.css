@@ -77,6 +77,12 @@
   object-fit: cover;
   object-position: center top;
   transition: transform var(--transition-normal);
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .book-detail__cover:hover .book-detail__cover-img {
