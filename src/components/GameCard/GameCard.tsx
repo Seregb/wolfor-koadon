@@ -113,14 +113,13 @@ function GameCard({ title, subtitle, previewItems, fullText, image, accent = 'va
             animate="visible"
             exit="hidden"
             variants={contentVariants}
-            overflow="hidden"
           >
             <div className="game-card__full-text-inner">
               {sections.map((section, i) => {
                 /* Определяем заголовок секции.
                    Эмодзи-маркер — всегда заголовок.
                    Короткие фразы (< 65 символов) — заголовок, ЕСЛИ не narrative-переход. */
-                const hasEmoji = section.codePointAt(0) > 0x2000;
+                const hasEmoji = section.codePointAt(0) !== undefined && section.codePointAt(0) > 0x2000;
 
                 /* Narrative starters — короткие связки внутри текста,
                    а не заголовки новых секций (И да, И пока, Или вы, и т.п.) */
