@@ -61,7 +61,6 @@ function BookCard({ data, index = 0, onScreen = false }: BookCardProps) {
           className="book-card__cover-img"
           loading="lazy"
         />
-        <span className="book-card__cover-volume">{data.volume}</span>
       </div>
 
       {/* Контент */}
