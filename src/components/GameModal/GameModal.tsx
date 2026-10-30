@@ -68,14 +68,19 @@ function GameModal({ isOpen, onClose, title, poster, fullText }: GameModalProps)
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="game-modal" onClick={handleOverlayClick} role="dialog" aria-modal="true">
+        <div
+          className="game-modal"
+          onClick={handleOverlayClick}
+          onContextMenu={handleContextMenu}
+          role="dialog"
+          aria-modal="true"
+        >
           <motion.div
             className="game-modal__backdrop"
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={overlayVariants}
-            onContextMenu={handleContextMenu}
           />
 
           <motion.div
