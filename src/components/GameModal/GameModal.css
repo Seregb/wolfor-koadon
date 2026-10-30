@@ -12,7 +12,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: calc(var(--header-height, 72px) + 24px) 24px 24px;
+  padding: calc(var(--header-height, 72px) + 24px) 24px 56px;
 }
 
 /* Затемнённый фон */
@@ -172,7 +172,7 @@
 
 @media (max-width: 768px) {
   .game-modal {
-    padding: 16px;
+    padding: 16px 16px 32px;
   }
 
   .game-modal__content {
@@ -203,6 +203,10 @@
 }
 
 @media (max-width: 480px) {
+  .game-modal {
+    padding: 16px 16px 24px;
+  }
+
   .game-modal__poster {
     aspect-ratio: 1 / 1;
   }
