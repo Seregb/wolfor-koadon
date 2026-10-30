@@ -1,6 +1,6 @@
 /* ===========================
-   GameCard — карточка игры (аккордеон)
-   арт-фон + превью-маркеры + раскрытие описания
+   GameCard — компактная карточка игры
+   арт-фон + превью-маркеры + кнопка «Подробнее»
    =========================== */
 
 /* ---------- Акцент через CSS-переменную пропса ---------- */
@@ -28,7 +28,7 @@
     0 0 32px rgba(212, 175, 55, 0.12);
 }
 
-/* ---------- Арт-фон (фиксированная высота, не растягивается при раскрытии) ---------- */
+/* ---------- Арт-фон ---------- */
 
 .game-card__art {
   position: absolute;
@@ -177,66 +177,20 @@
   display: inline-block;
   font-size: 14px;
   line-height: 1;
+  transition: transform 0.2s ease;
 }
 
-/* ---------- Полное описание (аккордеон) ---------- */
-
-.game-card__full-text {
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid var(--color-border);
-  background: var(--color-bg-card);
-  overflow: hidden;
+.game-card__expand-btn:hover .game-card__expand-btn-icon {
+  transform: translateX(3px);
 }
 
-.game-card__full-text-inner {
-  padding: 32px;
-  max-width: 100%;
-}
+/* ---------- Декоративная линия ---------- */
 
-/* Вступительный абзац */
-.game-card__full-text-lead {
-  font-family: var(--font-heading);
-  font-size: 17px;
-  line-height: 1.8;
-  color: var(--color-text);
-  margin: 0 0 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--color-border);
-  font-style: italic;
-}
-
-/* Заголовки секций */
-.game-card__full-text-heading {
-  font-family: var(--font-heading);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--card-accent);
-  margin: 28px 0 12px;
-  letter-spacing: 1px;
-  position: relative;
-  padding-left: 20px;
-}
-
-.game-card__full-text-heading::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 2px;
-  background: var(--card-accent);
-  border-radius: 1px;
-}
-
-/* Тело секции */
-.game-card__full-text-body {
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--color-text-muted);
-  margin: 0 0 16px;
+.game-card__line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
+  opacity: 0.2;
+  margin: 0 32px;
 }
 
 /* ---------- Адаптивность ---------- */
@@ -262,22 +216,6 @@
 
   .game-card__preview-heading {
     font-size: 12px;
-  }
-
-  .game-card__full-text-inner {
-    padding: 24px 20px;
-  }
-
-  .game-card__full-text-lead {
-    font-size: 15px;
-  }
-
-  .game-card__full-text-heading {
-    font-size: 15px;
-  }
-
-  .game-card__full-text-body {
-    font-size: 14px;
   }
 }
 
@@ -314,19 +252,5 @@
   .game-card__expand-btn {
     padding: 8px 20px;
     font-size: 12px;
-  }
-
-  .game-card__full-text-inner {
-    padding: 20px 16px;
-  }
-
-  .game-card__full-text-lead {
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .game-card__full-text-body {
-    font-size: 13px;
-    line-height: 1.7;
   }
 }

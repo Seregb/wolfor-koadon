@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import PageLayout from '../PageLayout/PageLayout';
 import GameCard, { type PreviewItem } from '../../components/GameCard/GameCard';
+import GameModal from '../../components/GameModal/GameModal';
 import lariarArt from '../../assets/games/lariar/lariar-arty.jpg';
 import teniaArt from '../../assets/games/tenia/tenia-arty.jpg';
 
@@ -139,6 +141,13 @@ const TENIA_PREVIEW: PreviewItem[] = [
 /* ---------- Страница «Игры» ---------- */
 
 function Games() {
+  const [activeGame, setActiveGame] = useState<string | null>(null);
+
+  /* Данные для модалки */
+  const modalData = activeGame === 'lariar'
+    ? { title: 'ЛАРИАР', poster: lariarArt, fullText: LARIAR_FULL_TEXT }
+    : { title: 'ТЕНИ АКИАРА', poster: teniaArt, fullText: TENIA_FULL_TEXT };
+
   return (
     <PageLayout useBackground>
       <div className="games-page">
@@ -151,7 +160,7 @@ function Games() {
             title="ЛАРИАР"
             subtitle="Тактическая RPG. Пошаговые бои. Система Заражения."
             previewItems={LARIAR_PREVIEW}
-            fullText={LARIAR_FULL_TEXT}
+            onOpen={() => setActiveGame('lariar')}
             image={lariarArt}
             accent="var(--color-gold)"
           />
@@ -161,12 +170,21 @@ function Games() {
             title="ТЕНИ АКИАРА"
             subtitle="Настольная кооперативная RPG. Униер поднимаются из глубин."
             previewItems={TENIA_PREVIEW}
-            fullText={TENIA_FULL_TEXT}
+            onOpen={() => setActiveGame('tenia')}
             image={teniaArt}
             accent="var(--color-lightning)"
           />
 
         </div>
+
+        {/* ====== Модальное окно ====== */}
+        <GameModal
+          isOpen={activeGame !== null}
+          onClose={() => setActiveGame(null)}
+          title={modalData.title}
+          poster={modalData.poster}
+          fullText={modalData.fullText}
+        />
 
       </div>
     </PageLayout>
