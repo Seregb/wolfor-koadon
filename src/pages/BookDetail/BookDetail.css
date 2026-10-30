@@ -95,24 +95,6 @@
   pointer-events: none;
 }
 
-/* Том на обложке */
-.book-detail__cover-volume {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  font-family: var(--font-heading);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  background: rgba(13, 13, 18, 0.75);
-  padding: 4px 10px;
-  border-radius: 4px;
-  border: 1px solid var(--color-border);
-  z-index: 1;
-}
-
 /* Декоративная рамка */
 .book-detail__cover::before {
   content: '';
@@ -153,19 +135,6 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
-}
-
-.book-detail__meta-volume {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-gold-dark);
-  background: rgba(212, 175, 55, 0.08);
-  padding: 4px 12px;
-  border-radius: 2px;
-  border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .book-detail__meta-year {
@@ -312,14 +281,6 @@
 @media (max-width: 480px) {
   .book-detail__cover {
     height: 280px;
-  }
-
-  .book-detail__cover-volume {
-    font-size: 15px;
-  }
-
-  .book-detail__cover-title {
-    font-size: 17px;
   }
 
   .book-detail__description {

@@ -54,14 +54,12 @@ function BookDetail() {
               className="book-detail__cover-img"
               loading="lazy"
             />
-            <span className="book-detail__cover-volume">{book.volume}</span>
           </div>
 
           <div className="book-detail__info">
             <h1 className="book-detail__title">{book.title}</h1>
             <div className="book-detail__meta">
-              <span className="book-detail__meta-volume">{book.volume}</span>
-              <span className="book-detail__meta-year">{book.year}</span>
+              {book.year && <span className="book-detail__meta-year">{book.year}</span>}
             </div>
             <p className="book-detail__description">{book.fullDescription}</p>
           </div>
