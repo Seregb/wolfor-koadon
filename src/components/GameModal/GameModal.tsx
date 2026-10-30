@@ -54,6 +54,14 @@ function GameModal({ isOpen, onClose, title, poster, fullText }: GameModalProps)
     if (e.target === e.currentTarget) onClose();
   };
 
+  /* Закрытие по ПКМ (правая кнопка мыши) за пределами контента */
+  const handleContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      e.preventDefault();
+      onClose();
+    }
+  };
+
   /* Разбиваем текст на секции */
   const sections = fullText.split('\n\n').filter(Boolean);
 
@@ -67,6 +75,7 @@ function GameModal({ isOpen, onClose, title, poster, fullText }: GameModalProps)
             animate="visible"
             exit="exit"
             variants={overlayVariants}
+            onContextMenu={handleContextMenu}
           />
 
           <motion.div
