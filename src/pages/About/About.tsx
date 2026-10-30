@@ -1,5 +1,4 @@
 import PageLayout from '../PageLayout/PageLayout';
-import { SectionCards } from '../../components/Card/Card';
 import { aboutBackground } from '../../assets/makets';
 
 import './About.css';
@@ -168,11 +167,6 @@ function About() {
           </section>
         </div>
 
-        {/* Переход к другим разделам */}
-        <div className="about-page__sidebar">
-          <h2 className="about-page__sidebar-title">Другие разделы</h2>
-          <SectionCards />
-        </div>
       </div>
     </PageLayout>
   );
