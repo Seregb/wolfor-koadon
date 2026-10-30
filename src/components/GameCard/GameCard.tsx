@@ -119,7 +119,8 @@ function GameCard({ title, subtitle, previewItems, fullText, image, accent = 'va
                 /* Определяем заголовок секции.
                    Эмодзи-маркер — всегда заголовок.
                    Короткие фразы (< 65 символов) — заголовок, ЕСЛИ не narrative-переход. */
-                const hasEmoji = section.codePointAt(0) !== undefined && section.codePointAt(0) > 0x2000;
+                const cp = section.codePointAt(0);
+const hasEmoji = cp !== undefined && cp > 0x2000;
 
                 /* Narrative starters — короткие связки внутри текста,
                    а не заголовки новых секций (И да, И пока, Или вы, и т.п.) */
